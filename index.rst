@@ -3,20 +3,19 @@ Rosetta入门
 
 ..   :numbered:
 .. :caption: 目录
+..   :maxdepth: 1
 
 .. raw:: html
    :file: frontpage.html
 
 .. toctree::
-   :maxdepth: 2
 
 
-   chapter_preface/preface
+   README_CN
    getting-started
    examples/index
 
 .. raw:: html
-
    <h2 class="toc"> Document Instllation </h2>
 
 .. code-block::
@@ -32,7 +31,6 @@ Rosetta入门
    sudo pip3 install notebook matplotlib
 
 .. raw:: html
-
    <h2 class="toc"> Usage </h2>
 
 .. code-block::

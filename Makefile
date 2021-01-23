@@ -6,6 +6,7 @@ run:all
 clean:
 	rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
 	rm -rf build/examples  build/getting-started.rst
+	rm -rf build/README_CN.md build/README.md build/doc build/example
 
 # .PHONY：copy
 copy:
@@ -16,6 +17,8 @@ copy:
 	cp -r examples/ build/examples/
 	# cp -r dev/ build/dev/
 	cp -r getting-started.rst build/getting-started.rst
+	cp -r doc/ build/doc/
+	cp -r example/ build/example/
 
 build/%.ipynb: %.md $(wildcard rosettazh/*)
 	@mkdir -p $(@D)
@@ -36,7 +39,7 @@ FRONTPAGE = $(wildcard $(FRONTPAGE_DIR)/*)
 FRONTPAGE_DEP = $(patsubst %, build/%, $(FRONTPAGE))
 
 IMG_NOTEBOOK = $(filter-out $(FRONTPAGE_DIR), $(wildcard img/*))
-ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py
+ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py README_CN.md README.md
 DEPS = $(patsubst %, build/%, $(ORIGIN_DEPS))
 
 PKG = build/_build/html/rosetta-zh.zip
