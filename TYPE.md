@@ -169,3 +169,7 @@
 * 每节末尾附上本节参考文献
   * 学术性引用
   * Google Scholar: APA格式
+
+## 扫码直达[讨论区](https://discuss.rosetta.ai/t/topic/11)
+
+![cheat1](../img/cheat1.svg)
