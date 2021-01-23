@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var discuss_str = '参与讨论'
+    var discuss_str = '参与讨论rosetta'
     $('h2').each(function () {
         if ($(this).text().indexOf("扫码") != -1) {
             var url = $(this).find('a').attr('href');
@@ -15,9 +15,13 @@ $(document).ready(function () {
                 }
             });
 
-            DiscourseEmbed = { discourseUrl: 'https://discuss.gluon.ai/', topicId: topic_id };
+            DiscourseEmbed = {
+                discourseUrl: 'https://discuss.rosetta.io/',
+                topicId: topic_id
+            };
             (function () {
-                var d = document.createElement('script'); d.type = 'text/javascript';
+                var d = document.createElement('script');
+                d.type = 'text/javascript';
                 d.async = true;
                 d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
                 (document.getElementsByTagName('head')[0] ||

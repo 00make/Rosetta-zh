@@ -6,8 +6,8 @@ import tempfile
 
 MANUAL_STY_FILE = 'build/_build/latex/sphinxmanual.cls'
 
-TEX_FILE_EN = 'build/_build/latex/d2l-en.tex'
-TEX_FILE_ZH = 'build/_build/latex/d2l-zh.tex'
+TEX_FILE_EN = 'build/_build/latex/rosetta-en.tex'
+TEX_FILE_ZH = 'build/_build/latex/rosetta-zh.tex'
 
 UNNUMBERED_EN = {'\\section{Summary}',
                  '\\section{Reference}',
@@ -62,8 +62,8 @@ def _tag_in_line(tag, line):
 
 
 def unnumber_sections(source_file, unnumbered, num_unnumbered_chaps, toc2_start_chap_no):
-    preface_reached = False
-    ch2_reached = False
+    # preface_reached = False
+    # ch2_reached = False
     num_chaps = 0
     with _TempFile(source_file) as target_file:
         with open(target_file, 'w') as target_f, open(source_file, 'r') as source_f:

@@ -1,22 +1,20 @@
 Rosetta入门
 ====================
 
-.. .. raw:: html
-..    :file: frontpage.html
+..   :numbered:
 
+.. raw:: html
+   :file: frontpage.html
 
 .. toctree::
+   :caption: 目录
    :maxdepth: 2
+
 
    chapter_preface/preface
+   getting-started
+   examples/index
 
-
-
-.. toctree::
-   :maxdepth: 2
-   :numbered:
-
-   chapter_introduction/deep-learning-intro
 
 
 sudo apt-get install git make
@@ -25,7 +23,7 @@ sudo pip3 install Sphinx
 sudo pip3 install sphinx-autobuild sphinx_rtd_theme sphinx_materialdesign_theme mxtheme
 sudo pip3 install recommonmark sphinx_markdown_tables
 sudo pip3 install jieba nbsphinx ipython
-sudo pip3 install mxnet d2lzh  pandas md2ipynb notedown
+sudo pip3 install pandas md2ipynb notedown
 sudo pip3 install beautifulsoup4 awscli
 sudo pip3 install notebook matplotlib
 

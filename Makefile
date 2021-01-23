@@ -3,12 +3,21 @@ all: clean copy html
 run:all 
 	sphinx-autobuild build build/_build/html
 
+clean:
+	rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
+	rm -rf build/examples  build/getting-started.rst
+
 # .PHONY：copy
 copy:
+	mkdir build/_build/ build/_build/html/ build/_build/html/_static/
+	cp -r _static/sphinx_materialdesign_theme.css build/_build/html/_static/sphinx_materialdesign_theme.css
 	cp -r _static/ build/_static/
 	cp -r frontpage.html build/frontpage.html
+	cp -r examples/ build/examples/
+	# cp -r dev/ build/dev/
+	cp -r getting-started.rst build/getting-started.rst
 
-build/%.ipynb: %.md $(wildcard d2lzh/*)
+build/%.ipynb: %.md $(wildcard rosettazh/*)
 	@mkdir -p $(@D)
 	cd $(@D); python3 ../utils/md2ipynb.py ../../$< ../../$@
 
@@ -27,14 +36,14 @@ FRONTPAGE = $(wildcard $(FRONTPAGE_DIR)/*)
 FRONTPAGE_DEP = $(patsubst %, build/%, $(FRONTPAGE))
 
 IMG_NOTEBOOK = $(filter-out $(FRONTPAGE_DIR), $(wildcard img/*))
-ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* d2lzh/*) index.rst conf.py
+ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py
 DEPS = $(patsubst %, build/%, $(ORIGIN_DEPS))
 
-PKG = build/_build/html/d2l-zh.zip
+PKG = build/_build/html/rosetta-zh.zip
 
 pkg: $(PKG)
 
-build/_build/html/d2l-zh.zip: $(OBJ) $(DEPS)
+build/_build/html/rosetta-zh.zip: $(OBJ) $(DEPS)
 	cd build; zip -r $(patsubst build/%, %, $@ $(DEPS)) chapter*/*md chapter*/*ipynb
 
 # Copy XX to build/XX if build/XX is depended (e.g., $(DEPS))
@@ -45,11 +54,11 @@ build/%: %
 html: $(DEPS) $(FRONTPAGE_DEP) $(OBJ)
 	make -C build html
 	python3 build/utils/post_html.py
-	cp -r img/frontpage/ build/_build/html/_images/
+	cp -r _static/frontpage/ build/_build/html/_images/
 	# Enable horitontal scrollbar for wide code blocks
 	sed -i s/white-space\:pre-wrap\;//g build/_build/html/_static/sphinx_materialdesign_theme.css
 
-TEX=build/_build/latex/d2l-zh.tex
+TEX=build/_build/latex/rosetta-zh.tex
 
 build/_build/latex/%.pdf: img/%.svg
 	@mkdir -p $(@D)
@@ -80,11 +89,9 @@ pdf: $(DEPS) $(OBJ) $(PDFIMG)
 
 	cd build/_build/latex && \
 	bash ../../utils/convert_output_svg.sh && \
-	buf_size=10000000 xelatex d2l-zh.tex && \
-	buf_size=10000000 xelatex d2l-zh.tex
+	buf_size=10000000 xelatex rosetta-zh.tex && \
+	buf_size=10000000 xelatex rosetta-zh.tex
 
-clean:
-	rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
 
 
 setup_pdf:
