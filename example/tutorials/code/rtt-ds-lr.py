@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # rosetta LR with sample based (horizonal federated learning)
-import latticex.rosetta as rtt  # difference from tensorflow
+import argparse
+import csv
 import math
 import os
 import sys
-import csv
-import tensorflow as tf
+import time
+
+import latticex.rosetta as rtt  # difference from tensorflow
 import numpy as np
 import pandas as pd
-import time
-import argparse
+import tensorflow as tf
 
 rtt.activate("SecureNN")
 mpc_player_id = rtt.py_protocol_handler.get_party_id()

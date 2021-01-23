@@ -1,5 +1,4 @@
 
-
 ## Quick start
 
 run the following command for checking all the tutorials-examples.
@@ -8,10 +7,7 @@ run the following command for checking all the tutorials-examples.
 ./tutorials.sh all
 ```
 
-
-
 ## About (Linear/Logistic) Regression
-
 
 |             |                                                 |
 | ----------- | ----------------------------------------------- |
@@ -23,4 +19,3 @@ run the following command for checking all the tutorials-examples.
 | *reveal     | rosetta version with reveal                     |
 | *stat       | statistics                                      |
 | *saver      | rosetta saver.save and tensorflow saver.restore |
-
