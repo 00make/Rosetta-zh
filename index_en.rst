@@ -2,7 +2,7 @@ English Version
 ====================
 
 .. raw:: html
-   :file: frontpage.html
+   :file: frontpage_en.html
 
 .. toctree::
    :maxdepth: 2
@@ -16,3 +16,7 @@ English Version
 
    getting-started
    examples/index
+
+..   :numbered:
+.. :caption: Content
+..   :maxdepth: 1

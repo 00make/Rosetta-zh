@@ -1,9 +1,5 @@
-Rosetta入门
+Rosetta入门文档
 ====================
-
-..   :numbered:
-.. :caption: 目录
-..   :maxdepth: 1
 
 .. raw:: html
    :file: frontpage.html

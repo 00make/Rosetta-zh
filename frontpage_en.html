@@ -1,0 +1,120 @@
+<link href="_static/frontpage.css" rel="stylesheet">
+
+<div class="mdl-grid header">
+  <div class="mdl-cell mdl-cell--4-col">
+    <img src="_images/frontpage/favicon.ico" class="img-fluid" alt="">
+  </div>
+  <div class="mdl-cell mdl-cell--1-col">
+  </div>
+  <div class="mdl-cell mdl-cell--4-col mdl-cell--middle">
+    <h2>Rosetta</h2>
+    <p>Rosetta is a privacy-preserving framework based on TensorFlow. It integrates with mainstream privacy-preserving computation technologies, including cryptography, federated learning and trusted execution environment. Rosetta aims to provide privacy-preserving solutions for artificial intelligence without requiring expertise in cryptography, federated learning and trusted execution environment. </p>
+  </div>
+</div>
+
+<!-- <div class="mdl-grid">
+  <div>
+    <h2>解决方案</h2>
+    <div align="left">
+      <ul>
+        <li><b>【隐私计算】</b>
+          基于密码学等隐私计算技术为各行业数据流动中的隐私保护提供端到端解决方案
+        </li>
+        <li><b>【供应链金融】</b>
+          为核心企业提供基于区块链、隐私计算、人工智能、大数据等技术打造的新一代供应链金融平台一体化解决方案及相关产品
+        </li>
+        <li><b>【业务协作】</b>
+          将业务系统接入区块链平台，为机构系统实现互联、信息可信共享，提高协作效率
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="authors mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col mdl-cell--top">
+    <div class="author-item">
+      <img src="./_images/frontpage/FengXiao.png" />
+      <h3>Feng Xiao</h3>
+      <p>Ph.D. in Economics, Nankai University</p>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col mdl-cell--top">
+    <div class="author-item">
+      <img src="./_images/frontpage/LilinSun.png" />
+      <h3>Lilin Sun</h3>
+      <p>Master, Wuhan University</p>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col mdl-cell--top">
+    <div class="author-item">
+      <img src="./_images/frontpage/XinjunLiang.png" />
+      <h3>Xinjun Liang</h3>
+      <p>Fudan University, Bachelor in Genetic Engineering</p>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col mdl-cell--top">
+    <div class="author-item">
+      <img src="./_images/frontpage/XiangXie.png" />
+      <h3><a href="https://github.com/xiexiangplaton">Xiang Xie</a></h3>
+      <p>Ph.D., Trusted Computing and Information Assurance Laboratory, Institute of Software, CAS </p>
+    </div>
+  </div>
+
+  <h3> 在<a href="https://github.com/LatticeX-Foundation/Rosetta/graphs/contributors">GitHub</a>上</h3>
+  <h4>关注我们</h4>
+  <a class="github-button" href="https://github.com/LatticeX-Foundation/Rosetta" data-icon="octicon-star"
+    data-size="large" data-show-count="true" aria-label="Star LatticeX-Foundation/Rosetta on GitHub">Star</a>
+  <a class="github-button" href="https://github.com/LatticeX-Foundation/Rosetta/fork" data-icon="octicon-repo-forked"
+    data-size="large" data-show-count="true" aria-label="Fork dLatticeX-Foundation/Rosetta on GitHub">Fork</a>
+</div> -->
+
+<div class="features mdl-grid">
+  <div class="mdl-cell mdl-cell--5-col mdl-cell--middle">
+    <div class="content">
+      <h2>How Rosetta Works</h2>
+      <p>Rosetta works by extending and hacking both Python frontend and the Operation Kernels in backend of TensorFlow. It decouples the development of TensorFlow-related components and privacy technology so that both developers from AI and cryptography can focus on what they are interested.</p>
+    
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--7-col">
+    <img src="_images/frontpage/architecture_detail_cn.png">
+  </div>
+</div>
+
+<div class="features-2 mdl-grid">
+  <h2>Data Flow Graph and Operations</h2>
+  <p>
+    When running your Rosetta program, firstly the native TensorFlow data flow graph will be converted, and during this process the native Operations within the graph will be replaced with SecureOps.And at the second stage, the backend kernels of operations, implemented with specific cryptographic protocol, will be called to carry out underlying secure computation.
+  </p>
+
+  <div class="mdl-cell mdl-cell--4-col">
+    <img src="_images/frontpage/static_pass.png" />
+  </div>
+  <div class="mdl-cell mdl-cell--4-col">
+    <img src="_images/frontpage/dynamic_pass.png" />
+  </div>
+
+</div>
+
+
+
+
+<div class="mdl-grid">
+  <div>
+    <h3>Build and Install Rosetta</h3>
+    <br>
+    <div align="left"><tt>
+        <pre># clone rosetta git repository
+git clone https://github.com/LatticeX-Foundation/Rosetta.git
+cd Rosetta
+# compile, install and run test cases
+bash compile_and_test_all.sh</pre>
+      </tt>
+    </div>
+  </div>
+</div>
+
+<h2 class="toc"> Contents </h2>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>

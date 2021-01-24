@@ -7,8 +7,6 @@ addmd2ipynb:
 	python3 build/utils/md2ipynb.py example/millionaire/README.md build/example/millionaire/README.ipynb
 	python3 build/utils/md2ipynb.py example/tutorials/code/README.md build/example/tutorials/code/README.ipynb
 
-
-
 run:all 
 	sphinx-autobuild build build/_build/html
 
@@ -17,7 +15,6 @@ clean:
 	# rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
 	# rm -rf build/examples  build/getting-started.rst
 	# rm -rf build/README_CN.md build/README.md build/doc build/example
-	
 
 # .PHONY：copy
 copy:
@@ -26,9 +23,7 @@ copy:
 	mkdir build/_build/ build/_build/html/ build/_build/html/_static/
 	cp -r _static/sphinx_materialdesign_theme.css build/_build/html/_static/sphinx_materialdesign_theme.css
 	cp -r _static/ build/_static/
-	cp -r frontpage.html build/frontpage.html
 	cp -r examples/ build/examples/
-	cp -r getting-started.rst build/getting-started.rst
 	cp -r doc/ build/doc/
 	rm -rf build/doc/*.md
 	cp -r example/ build/example/
@@ -54,7 +49,7 @@ FRONTPAGE = $(wildcard $(FRONTPAGE_DIR)/*)
 FRONTPAGE_DEP = $(patsubst %, build/%, $(FRONTPAGE))
 
 IMG_NOTEBOOK = $(filter-out $(FRONTPAGE_DIR), $(wildcard img/*))
-ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py index_en.rst
+ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst getting-started.rst conf.py index_en.rst frontpage.html frontpage_en.html
 DEPS = $(patsubst %, build/%, $(ORIGIN_DEPS))
 
 PKG = build/_build/html/rosetta-zh.zip
@@ -109,8 +104,6 @@ pdf: $(DEPS) $(OBJ) $(PDFIMG)
 	bash ../../utils/convert_output_svg.sh && \
 	buf_size=10000000 xelatex rosetta-zh.tex && \
 	buf_size=10000000 xelatex rosetta-zh.tex
-
-
 
 setup_pdf:
 	sudo apt-get install texlive-xetex latex-cjk-all
