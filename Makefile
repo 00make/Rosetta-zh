@@ -118,7 +118,7 @@ gitpullmerge:
 deploy:all
 
 	rm -rf /var/www/html/*
-	cp -r build/_build/html /var/www/html
+	cp -r build/_build/html /var/www/
 	chmod 644 /var/www/html/index.html
 	# rm -rf /var/www/build/* /var/www/html/*
 	# cp -r build /var/www/build
