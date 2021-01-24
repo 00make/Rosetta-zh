@@ -20,7 +20,7 @@ The current version integrates the secure multi-party computation protocols for 
 
 For now, Rosetta runs on Ubuntu 18.04, and is based on TensorFlow 1.14 with CPUs (Windows OS is not currently supported yet). You can install Rosetta as follows.
 
-First, please check that your local system meets our [base environment requirement](doc/DEPLOYMENT.md#rosetta-deployment-guide).
+First, please check that your local system meets our [base environment requirement](doc/DEPLOYMENT.md).
 
 Then install the native TensorFlow with the following codes. Note that you could also install it from source code, check [here](doc/TENSORFLOW_INSTALL.md) for details.
 
@@ -121,7 +121,7 @@ while P1 has:
 
 That's all, you can see Rosetta is so easy to use.
 
-For more details, please check [Tutorials](doc/TUTORIALS.md) and [Examples](./example).
+For more details, please check [Tutorials](doc/TUTORIALS.md) and [Examples](example/README.md).
 
 > Note: Currently Rosetta already supports 128-bit integer data type, which can be enabled by configuring the environment variable `export ROSETTA_MPC_128=ON`.
 
@@ -129,7 +129,7 @@ For more details, please check [Tutorials](doc/TUTORIALS.md) and [Examples](./ex
 
 To help you start with your first workable program with Rosetta easily, our [Tutorials](doc/TUTORIALS.md) will lead you to this fantastic world. In this detailed tutorials, we will assist you learn the basic concepts about Rosetta, then show you how to use the interfaces that we provide by easy-to-understand examples, and finally help you build a workable privacy-preserving machine learning model on real-world datasets.
 
-Hopefully, this tutorial, and more other examples in [Examples](./example), will whet your appetite to dive in knowing more about this privacy-preserving framework.
+Hopefully, this tutorial, and more other examples in [Examples](example/README.md), will whet your appetite to dive in knowing more about this privacy-preserving framework.
 
 ## How Rosetta Works
 
@@ -147,7 +147,7 @@ And at the second stage, the backend kernels of operations, implemented with spe
 
 ## Contributing to Rosetta
 
-Rosetta is an open source project developed under the LPGLv3 license and maintained by [LatticeX Foundation](https://latticex.foundation/). Contributions from individuals and organizations are all welcome. Before beginning, please take a look at our [contributing guidelines](CONTRIBUTING.md). Our project adheres to [code of conduct](CODE_OF_CONDUCT.md). By participating in our community, you are expected to uphold this code. You could also open an issue by clicking [here](https://github.com/LatticeX-Foundation/Rosetta/issues/new).
+Rosetta is an open source project developed under the LPGLv3 license and maintained by [LatticeX Foundation](https://latticex.foundation/). Contributions from individuals and organizations are all welcome. Before beginning, please take a look at our contributing guidelines. Our project adheres to code of conduct. By participating in our community, you are expected to uphold this code. You could also open an issue by clicking [here](https://github.com/LatticeX-Foundation/Rosetta/issues/new).
 
 ## Documents List
 
@@ -161,7 +161,7 @@ Rosetta is an open source project developed under the LPGLv3 license and maintai
 
 * [Rosetta Glossary](doc/GLOSSARY.md)
 
-* [Rosetta Release Notes](RELEASE.md)
+
 
 ## Contact
 
@@ -169,4 +169,4 @@ You could reach us by [email](mailto:rosetta@latticex.foundation). **And you are
 
 ## License
 
-The Rosetta library is licensed under the [GNU Lesser General Public License v3.0](COPYING.LESSER).
+The Rosetta library is licensed under the [GNU Lesser General Public License v3.0](LICENSE).

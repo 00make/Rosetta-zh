@@ -1,13 +1,22 @@
-all: clean copy html
+all: clean copy addmd2ipynb html clean2
+
+addmd2ipynb:
+	python3 build/utils/md2ipynb.py README_CN.md build/README_CN.ipynb
+	python3 build/utils/md2ipynb.py README.md build/README.ipynb
+
+clean2:
+	rm -rf build/build
+
 
 run:all 
 	sphinx-autobuild build build/_build/html
 
 clean:
+	rm -rf build/*
 	# rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
 	# rm -rf build/examples  build/getting-started.rst
 	# rm -rf build/README_CN.md build/README.md build/doc build/example
-	rm -rf build/*
+	
 
 # .PHONY：copy
 copy:
@@ -20,7 +29,9 @@ copy:
 	cp -r examples/ build/examples/
 	cp -r getting-started.rst build/getting-started.rst
 	cp -r doc/ build/doc/
+	rm -rf build/doc/*.md
 	cp -r example/ build/example/
+	rm -rf build/example/*.md
 
 build/%.ipynb: %.md $(wildcard rosettazh/*)
 	@mkdir -p $(@D)
@@ -41,7 +52,7 @@ FRONTPAGE = $(wildcard $(FRONTPAGE_DIR)/*)
 FRONTPAGE_DEP = $(patsubst %, build/%, $(FRONTPAGE))
 
 IMG_NOTEBOOK = $(filter-out $(FRONTPAGE_DIR), $(wildcard img/*))
-ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py README_CN.md README.md
+ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py
 DEPS = $(patsubst %, build/%, $(ORIGIN_DEPS))
 
 PKG = build/_build/html/rosetta-zh.zip

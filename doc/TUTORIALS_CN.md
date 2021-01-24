@@ -134,7 +134,7 @@ with tf.Session() as sess:
 
 输出如下：
 
-```log
+```sh
 ret: True
 ```
 
@@ -204,7 +204,7 @@ with tf.Session() as sess:
 
 输出如下：
 
-```log
+```sh
 ret: 1.0
 ```
 
@@ -334,7 +334,7 @@ with tf.Session() as sess:
 
 输出如下：
 
-```log
+```sh
 Y_pred: [[5.409453 ]
  [5.803287 ]
  [5.9634194]
@@ -405,7 +405,7 @@ OK，简单总结一下与 `tensorflow` 版本的区别：
 
 输出如下：
 
-```log
+```sh
 Y_pred: [[1.22580022e+14]
  [1.22481157e+14]
  [1.22514398e+14]
@@ -466,7 +466,7 @@ with tf.Session() as sess:
 
 输出如下：
 
-```log
+```sh
 Y_pred: [[5.40625 ]
  [5.828125]
  [5.953125]
@@ -680,7 +680,7 @@ with tf.Session() as sess:
 
 输出如下：
 
-```log
+```sh
 Y_pred: [[5.4112522 ]
  [5.80601873]
  [5.96399414]

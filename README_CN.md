@@ -18,7 +18,7 @@ import latticex.rosetta
 
 目前，Rosetta 可以运行在 Ubuntu 18.04 操作系统下（其他环境有待测试验证），并且基于 TensorFlow 1.14 CPU 版本开发。你可以按如下方式完成安装。
 
-首先，请确认您本地系统的基础环境已经符合[要求](doc/DEPLOYMENT_CN.md#rosetta-deployment-guide)。
+首先，请确认您本地系统的基础环境已经符合[要求](doc/DEPLOYMENT_CN.md)。
 
 然后使用如下命令行安装原生 TensorFlow 库。你也可以通过编译 TensorFlow 源码加以安装，具体方法请参考[这里](doc/TENSORFLOW_INSTALL_CN.md).
 
@@ -117,7 +117,7 @@ python rosetta_demo.py --party_id=2
 
 就是这样，你可以看出 Rosetta 是很方便易用的。
 
-想要体验更多的例子，可以参考[示例目录](./example).
+想要体验更多的例子，可以参考[示例目录](example/README.md).
 
 > 提示: 当前 Rosetta 版本已经可以支持128-bit的大整数数据类型，这意味着底层的密码协议可以有更高的精度选择空间，你可以通过在环境变量中设置`export ROSETTA_MPC_128=ON`来开启这一服务。
 
@@ -159,12 +159,10 @@ Rosetta 是一个由[Lattice基金会]((https://latticex.foundation/))维护的�
 
 * [Rosetta 术语表](doc/GLOSSARY_CN.md)
 
-* [Rosetta 版本说明](RELEASE.md)
-
 ## 联系方式
 
 你可以通过[邮箱](mailto:rosetta@latticex.foundation)联系我们。**也非常欢迎加入我们在 [Slack](https://join.slack.com/t/latticexrosetta/shared_invite/zt-dum6j65d-MTxp~Bxq5OwouJW8zUKB1Q)上的 Rosetta 社区以获取最新资讯、和其他开发者一起交流讨论。**
 
 ## 许可证
 
-Rosetta 代码库基于 [GNU Lesser General Public License v3.0](COPYING.LESSER) 许可证开放使用。
+Rosetta 代码库基于 [GNU Lesser General Public License v3.0](LICENSE) 许可证开放使用。
