@@ -116,7 +116,11 @@ gitpullmerge:
 	git merge origin/main
 
 deploy:all
-	rm -rf /var/www/build/* /var/www/html/*
-	cp -r build /var/www/build
+
+	rm -rf /var/www/html/*
 	cp -r build/_build/html /var/www/html
-	sphinx-autobuild /var/www/build /var/www/html
+	chmod 644 /var/www/html/index.html
+	# rm -rf /var/www/build/* /var/www/html/*
+	# cp -r build /var/www/build
+	# cp -r build/_build/html /var/www/html
+	# sphinx-autobuild /var/www/build /var/www/html
