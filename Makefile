@@ -52,7 +52,7 @@ FRONTPAGE = $(wildcard $(FRONTPAGE_DIR)/*)
 FRONTPAGE_DEP = $(patsubst %, build/%, $(FRONTPAGE))
 
 IMG_NOTEBOOK = $(filter-out $(FRONTPAGE_DIR), $(wildcard img/*))
-ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py
+ORIGIN_DEPS = $(IMG_NOTEBOOK) $(wildcard data/* rosettazh/*) index.rst conf.py index_en.rst
 DEPS = $(patsubst %, build/%, $(ORIGIN_DEPS))
 
 PKG = build/_build/html/rosetta-zh.zip
