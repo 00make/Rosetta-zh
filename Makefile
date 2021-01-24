@@ -117,5 +117,5 @@ gitpullmerge:
 
 deploy:all
 	rm -rf /var/www/build/* /var/www/html/*
-	cp -r build /var/www/build 
+	cp -r build /var/www/build
 	sphinx-autobuild /var/www/build /var/www/html
