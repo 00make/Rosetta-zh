@@ -110,3 +110,12 @@ setup_pdf:
 	sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 	sudo apt-get install texmaker
 	# bash build/utils/install_fonts.sh
+
+gitpullmerge:
+	git pull origin main
+	git merge origin/main
+
+deploy:all
+	rm -rf /var/www/build/* /var/www/html/*
+	cp -r build /var/www/build 
+	sphinx-autobuild /var/www/build /var/www/html
