@@ -145,7 +145,7 @@ Rosetta 是通过深度扩展、改造 TensorFlow 的前后端各个组件，并
 
 Rosetta 是一个由[Lattice基金会]((https://latticex.foundation/))维护的、基于 LPGLv3 许可证的开源项目。
 
-**我们欢迎来自个人和组织的各种贡献，包括代码开发、文档撰写、合作交流等各个方面，也欢迎 star、推广我们的 Github 项目**。具体内容请参考[社区参与指南](CONTRIBUTING.md)、[社区行为规范](CODE_OF_CONDUCT.md)。如果在使用或开发中有任何的问题，你也可以直接的在 [这里](https://github.com/LatticeX-Foundation/Rosetta/issues/new)给我们提 issues。
+**我们欢迎来自个人和组织的各种贡献，包括代码开发、文档撰写、合作交流等各个方面，也欢迎 star、推广我们的 Github 项目**。具体内容请参考社区参与指南、社区行为规范。如果在使用或开发中有任何的问题，你也可以直接的在 [这里](https://github.com/LatticeX-Foundation/Rosetta/issues/new)给我们提 issues。
 
 ## 文档列表
 
@@ -162,7 +162,3 @@ Rosetta 是一个由[Lattice基金会]((https://latticex.foundation/))维护的�
 ## 联系方式
 
 你可以通过[邮箱](mailto:rosetta@latticex.foundation)联系我们。**也非常欢迎加入我们在 [Slack](https://join.slack.com/t/latticexrosetta/shared_invite/zt-dum6j65d-MTxp~Bxq5OwouJW8zUKB1Q)上的 Rosetta 社区以获取最新资讯、和其他开发者一起交流讨论。**
-
-## 许可证
-
-Rosetta 代码库基于 [GNU Lesser General Public License v3.0](LICENSE) 许可证开放使用。

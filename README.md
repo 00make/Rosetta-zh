@@ -166,7 +166,3 @@ Rosetta is an open source project developed under the LPGLv3 license and maintai
 ## Contact
 
 You could reach us by [email](mailto:rosetta@latticex.foundation). **And you are welcome to join Rosetta community on [Slack](https://join.slack.com/t/latticexrosetta/shared_invite/zt-dum6j65d-MTxp~Bxq5OwouJW8zUKB1Q) to ask any questions and discuss on any interesting topics with other developers**.
-
-## License
-
-The Rosetta library is licensed under the [GNU Lesser General Public License v3.0](LICENSE).
