@@ -1,7 +1,8 @@
-
-## Quick Start
+# Millionaire
 
 Run the following on three different terminals (you can understand that these three different terminals simulate three different host nodes):
+
+## Input
 
 ```sh
 # node 0
@@ -18,7 +19,7 @@ python3 millionaire.py --party_id=1
 python3 millionaire.py --party_id=2
 ```
 
-Output:
+## Output
 
 ```sh
 ret: 1.0

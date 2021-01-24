@@ -1,11 +1,12 @@
-all: clean copy addmd2ipynb html clean2
+all: clean copy addmd2ipynb html 
 
 addmd2ipynb:
 	python3 build/utils/md2ipynb.py README_CN.md build/README_CN.ipynb
 	python3 build/utils/md2ipynb.py README.md build/README.ipynb
+	python3 build/utils/md2ipynb.py example/tutorials/README.md build/example/tutorials/README.ipynb
+	python3 build/utils/md2ipynb.py example/millionaire/README.md build/example/millionaire/README.ipynb
+	python3 build/utils/md2ipynb.py example/tutorials/code/README.md build/example/tutorials/code/README.ipynb
 
-clean2:
-	rm -rf build/build
 
 
 run:all 
@@ -32,6 +33,7 @@ copy:
 	rm -rf build/doc/*.md
 	cp -r example/ build/example/
 	rm -rf build/example/*.md
+	rm -rf build/build build/example/*/*.md build/example/tutorials/code/README.md
 
 build/%.ipynb: %.md $(wildcard rosettazh/*)
 	@mkdir -p $(@D)

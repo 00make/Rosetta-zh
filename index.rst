@@ -9,8 +9,13 @@ Rosetta入门
    :file: frontpage.html
 
 .. toctree::
+   :maxdepth: 2
 
    README_CN
    doc/index.rst
    example/index.rst
+
+.. toctree::
+   :maxdepth: 1
+
    index_en

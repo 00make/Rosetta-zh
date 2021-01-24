@@ -7,5 +7,6 @@ Example
    :maxdepth: 1
 
    millionaire/README.md
-   tutorials/README.md
+   tutorials/README
+   tutorials/code/README
    README.md

@@ -11,7 +11,7 @@
       - [Rosetta Version](#rosetta-version)
   - [Privacy-Preserving Machine Learning](#privacy-preserving-machine-learning)
     - [Linear Regression](#linear-regression)
-      - [TensorFlow Version](#tensorflow-version-1)
+      - [TensorFlow Version Linear Regression](#tensorflow-version-linear-regression)
       - [Rosetta Basic Version](#rosetta-basic-version)
       - [Rosetta Version-with Reveal](#rosetta-version-with-reveal)
       - [Comparison and Evaluation 1](#comparison-and-evaluation-1)
@@ -80,7 +80,6 @@ python3 quickstart.py --party_id=2
 If you see `DONE!` in the output, you have accomplished the first goal.
 
 > `--party_id` This is a command line option that specifies which role the current running script is playing.
-
 > In the following, in order to describe examples concisely, we will just directly uses `./tutorials.sh` to show that we are running the three steps above.
 
 <br/>
@@ -231,7 +230,7 @@ This section introduces how to use `rosetta` to perform a complete `Linear Regre
 
 Before using `rosetta` for machine learning, in order to compare with `rosetta`-backed MPC version, let's see how we do the same task in native `tensorflow` style without the concern of data privacy.
 
-#### TensorFlow Version
+#### TensorFlow Version Linear Regression
 
 Here is a simple `Linear Regression` with `tensorflow`.
 
@@ -518,12 +517,11 @@ Rosetta:
 We can see that the evaluation scores (with little loss on precision) are almost the same.
 
 > R^2 is lower because this dataset is a Logistic Regression model, not a Linear Regression model
-
 > Here we only need to care about the error between the two versions (it is very small)
 
 The following figure is about the error comparison between the predicted values ​​of `tensorflow` and `rosetta`.
 
-![](./_static/tutorials/linear_regression_stat-Y-diff4.png)
+![linear_regression_stat-Y-diff4](./_static/tutorials/linear_regression_stat-Y-diff4.png)
 
 #### Comparison and Evaluation 2
 
@@ -604,7 +602,7 @@ Regarding the saving of the plaintext result, you can choose to save at node 0, 
 
 `SAVER_MODE` is a flag of a bitmap combination, and its meaning is as follows
 
-```
+```sh
 // 0: Save the cipher text. (And the number 1 ~ 7 below indicates which specific parties to  save the plain text files)
 // 1: P0,
 // 2: P1,
@@ -790,12 +788,11 @@ Rosetta:
 ```
 
 > Here we only care about the error between the two versions (we can see that it is very small)
-
 > Rosetta is even slightly better than TensorFlow
 
 The following figure is about the error comparison between the predicted values ​​of `tensorflow` and `rosetta`.
 
-![](./_static/tutorials/logistic_regression_stat-Y-diff4.png)
+![logistic_regression_stat-Y-diff4](./_static/tutorials/logistic_regression_stat-Y-diff4.png)
 
 ### Support big data sets
 
@@ -864,7 +861,7 @@ The data set source reference [here](http://archive.ics.uci.edu/ml/datasets/Wine
 
 We have performed simple pre-process steps to get the results as follows, the path is in `dsets/`, and the directory structure is as follows:
 
-```
+```sh
 dsets/
 ├── ALL
 │   ├── cls_test_x.csv

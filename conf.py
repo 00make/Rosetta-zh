@@ -146,12 +146,13 @@ html_theme_options = {
     'accent_color': 'blue',
     'header_links': [
         ('Home', 'index', False, 'home'),
-        ('PDF', 'https://github.com/LatticeX-Foundation/Rosetta/blob/master/doc/Rosetta_whitepaper_cn.pdf',
+        ('PDF', 'https://github.com/LatticeX-Foundation/Rosetta/blob/master/doc/Rosetta_whitepaper.pdf',
          True, 'fas fa-file-pdf'),
         # ('Jupyter 记事本文件', 'https://github.com/LatticeX-Foundation/Rosetta', True, 'fas fa-download'),
         # ('讨论', 'https://discuss.rosetta.io', True, 'fab fa-discourse'),
         ('GitHub', 'https://github.com/LatticeX-Foundation/Rosetta', True, 'fab fa-github'),
         ('矩阵元', 'https://www.matrixelements.com/', True, 'fas fa-external-link-alt'),
+        ('English Version', 'index_en', True, 'fas fa-external-link-alt'),
     ],
     'show_footer': True
 }
