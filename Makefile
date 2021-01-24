@@ -4,18 +4,20 @@ run:all
 	sphinx-autobuild build build/_build/html
 
 clean:
-	rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
-	rm -rf build/examples  build/getting-started.rst
-	rm -rf build/README_CN.md build/README.md build/doc build/example
+	# rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
+	# rm -rf build/examples  build/getting-started.rst
+	# rm -rf build/README_CN.md build/README.md build/doc build/example
+	rm -rf build/
 
 # .PHONY：copy
 copy:
+	cp -r _static/utils build/utils
+	cp -r _static/Makefile build/Makefile
 	mkdir build/_build/ build/_build/html/ build/_build/html/_static/
 	cp -r _static/sphinx_materialdesign_theme.css build/_build/html/_static/sphinx_materialdesign_theme.css
 	cp -r _static/ build/_static/
 	cp -r frontpage.html build/frontpage.html
 	cp -r examples/ build/examples/
-	# cp -r dev/ build/dev/
 	cp -r getting-started.rst build/getting-started.rst
 	cp -r doc/ build/doc/
 	cp -r example/ build/example/
@@ -29,7 +31,7 @@ build/%.md: %.md
 	@cp $< $@
 
 MARKDOWN = $(wildcard */index.md)
-NOTEBOOK = $(filter-out $(MARKDOWN), $(wildcard chapter*/*.md))
+NOTEBOOK = $(filter-out $(MARKDOWN), $(wildcard */*.md))
 
 OBJ = $(patsubst %.md, build/%.md, $(MARKDOWN)) \
 	$(patsubst %.md, build/%.ipynb, $(NOTEBOOK))

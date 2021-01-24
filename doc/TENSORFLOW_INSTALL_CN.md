@@ -25,7 +25,7 @@
 - **检查ubuntu**
 
 ```bash
-lsb_release -r      # e.g. Release: 18.04
+lsb_release -r     # e.g. Release: 18.04
 ```
 
 ***如果输出发布版本非`18.04`，则需要安装对应版本操作系统，然后执行后续步骤。***
@@ -34,7 +34,7 @@ lsb_release -r      # e.g. Release: 18.04
 
 ```bash
 python3 --version   # e.g. Python 3.6.9
-pip3 --version      # e.g. pip 20.0.2
+pip3 --version     # e.g. pip 20.0.2
 ```
 
 如果不符合系统要求，则执行安装或升级：
@@ -68,48 +68,48 @@ pip3 install tensorflow==1.14.0 --user
 
 1. **安装python依赖包**
 
-    ```bash
-    pip3 install -U --user pip six wheel setuptools mock 'future>=0.17.1' 'numpy==1.16.4'
-    pip3 install -U --user keras_applications --no-deps
-    pip3 install -U --user keras_preprocessing --no-deps
-    ```
+   ```bash
+   pip3 install -U --user pip six wheel setuptools mock 'future>=0.17.1' 'numpy==1.16.4'
+   pip3 install -U --user keras_applications --no-deps
+   pip3 install -U --user keras_preprocessing --no-deps
+   ```
 
 2. **安装bazel（v0.25.0）**
 
-    ```bash
-    # download bazel binary installer
-    wget https://github.com/bazelbuild/bazel/releases/download/0.25.0/bazel-0.25.0-installer-linux-x86_64.sh
-    # set to executable
-    chmod +x bazel-0.25.0-installer-linux-x86_64.sh
-    # install required tool unzip
-    sudo apt install unzip
-    # install bazel
-    ./bazel-0.25.0-installer-linux-x86_64.sh --user
-    # update the PATH environment variable
-    export PATH="$PATH:$HOME/bin"
-    ```
+   ```bash
+   # download bazel binary installer
+   wget https://github.com/bazelbuild/bazel/releases/download/0.25.0/bazel-0.25.0-installer-linux-x86_64.sh
+   # set to executable
+   chmod +x bazel-0.25.0-installer-linux-x86_64.sh
+   # install required tool unzip
+   sudo apt install unzip
+   # install bazel
+   ./bazel-0.25.0-installer-linux-x86_64.sh --user
+   # update the PATH environment variable
+   export PATH="$PATH:$HOME/bin"
+   ```
 
-    > bazel安装参考[官方文档][bazel-install]
+   > bazel安装参考[官方文档][bazel-install]
 
 3. **TensorFlow源码编译**
-    > 安装时间将很长（约6小时），建议配置8G以上的内存
+   > 安装时间将很长（约6小时），建议配置8G以上的内存
 
-    ```bash
-    # clone TensorFlow github repository
-    git clone https://github.com/tensorflow/tensorflow.git
-    # checkout v1.14.0 tag
-    cd tensorflow
-    git checkout v1.14.0
-    # configure and then bazel compile...
-    ./configure
-    bazel build --config=opt -j 4 //tensorflow/tools/pip_package:build_pip_package
-    # build .whl installer
-    ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-    # install tensorflow
-    pip3 install /tmp/tensorflow_pkg/*.whl --user
-    ```
+   ```bash
+   # clone TensorFlow github repository
+   git clone https://github.com/tensorflow/tensorflow.git
+   # checkout v1.14.0 tag
+   cd tensorflow
+   git checkout v1.14.0
+   # configure and then bazel compile...
+   ./configure
+   bazel build --config=opt -j 4 //tensorflow/tools/pip_package:build_pip_package
+   # build .whl installer
+   ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+   # install tensorflow
+   pip3 install /tmp/tensorflow_pkg/*.whl --user
+   ```
 
-    > TensorFlow源码安装可以参考[官方文档][tensorflow-source-install]
+   > TensorFlow源码安装可以参考[官方文档][tensorflow-source-install]
 
 ## 安装检验
 

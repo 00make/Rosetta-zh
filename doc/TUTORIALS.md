@@ -122,9 +122,9 @@ The third step is to call `session.run` and check the results:
 res = tf.greater(Alice, Bob)
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
-    sess.run(init)
-    ret = sess.run(res)
-    print("ret:", ret)  # ret: True
+   sess.run(init)
+   ret = sess.run(res)
+   print("ret:", ret)  # ret: True
 ```
 
 Refer to [tf-millionaire.py](../example/tutorials/code/tf-millionaire.py) for the full version.
@@ -177,9 +177,9 @@ The forth step is exactly the same as `tensorflow`.
 res = tf.greater(Alice, Bob)
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
-    sess.run(init)
-    res = sess.run(res)
-    print('res:', res)  # res: 722739251331272.4
+   sess.run(init)
+   res = sess.run(res)
+   print('res:', res)  # res: 722739251331272.4
 ```
 
 The above output of `res` is a `sharing` value in [Secret-Sharing scheme](GLOSSARY.md).
@@ -190,9 +190,9 @@ How do we know the plaintext value? We provide a `reveal` interface to get the p
 
 ```py
 with tf.Session() as sess:
-    # ...
-    ret = rtt.SecureReveal(res)
-    print('ret:', sess.run(ret))  # ret: 1.0
+   # ...
+   ret = rtt.SecureReveal(res)
+   print('ret:', sess.run(ret))  # ret: 1.0
 ```
 
 For the complete program of console version, refer to [rtt-millionaire-console.py](../example/tutorials/code/rtt-millionaire-console.py).
@@ -302,27 +302,27 @@ init = tf.global_variables_initializer()
 
 ```py
 with tf.Session() as sess:
-    sess.run(init)
-    xW, xb = sess.run([W, b])
-    print("init weight:{} \nbias:{}".format(xW, xb))
+   sess.run(init)
+   xW, xb = sess.run([W, b])
+   print("init weight:{} \nbias:{}".format(xW, xb))
 
-    # train
-    BATCHES = math.ceil(len(real_X) / BATCH_SIZE)
-    for e in range(EPOCHES):
-        for i in range(BATCHES):
-            bX = real_X[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
-            bY = real_Y[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
-            sess.run(train, feed_dict={X: bX, Y: bY})
+   # train
+   BATCHES = math.ceil(len(real_X) / BATCH_SIZE)
+   for e in range(EPOCHES):
+      for i in range(BATCHES):
+         bX = real_X[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
+         bY = real_Y[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
+         sess.run(train, feed_dict={X: bX, Y: bY})
 
-            j = e * BATCHES + i
-            if j % 50 == 0 or (j == EPOCHES * BATCHES - 1 and j % 50 != 0):
-                xW, xb = sess.run([W, b])
-                print("I,E,B:{:0>4d},{:0>4d},{:0>4d} weight:{} \nbias:{}".format(
-                    j, e, i, xW, xb))
+         j = e * BATCHES + i
+         if j % 50 == 0 or (j == EPOCHES * BATCHES - 1 and j % 50 != 0):
+            xW, xb = sess.run([W, b])
+            print("I,E,B:{:0>4d},{:0>4d},{:0>4d} weight:{} \nbias:{}".format(
+               j, e, i, xW, xb))
 
-    # predict
-    Y_pred = sess.run(pred_Y, feed_dict={X: real_X, Y: real_Y})
-    print("Y_pred:", Y_pred)
+   # predict
+   Y_pred = sess.run(pred_Y, feed_dict={X: real_X, Y: real_Y})
+   print("Y_pred:", Y_pred)
 ```
 
 For complete code reference Please refer to [tf-linear_regression.py](../example/tutorials/code/tf-linear_regression.py) for the complete source code.
@@ -377,7 +377,7 @@ We have highlighted the spots that are different from `tensorflow`. In contrast 
 file_x = '../dsets/P' + str(rtt.mpc_player.id) + "/reg_train_x.csv"
 file_y = '../dsets/P' + str(rtt.mpc_player.id) + "/reg_train_y.csv"
 real_X, real_Y = rtt.PrivateDataset(data_owner=(
-    0, 1), label_owner=1).load_data(file_x, file_y, header=None)
+   0, 1), label_owner=1).load_data(file_x, file_y, header=None)
 # ######################################## difference from tensorflow
 DIM_NUM = real_X.shape[1]
 ```
@@ -434,27 +434,27 @@ reveal_Y = rtt.SecureReveal(pred_Y)
 # ########### for test, reveal
 
 with tf.Session() as sess:
-    sess.run(init)
-    rW, rb = sess.run([reveal_W, reveal_b])
-    print("init weight:{} \nbias:{}".format(rW, rb))
+   sess.run(init)
+   rW, rb = sess.run([reveal_W, reveal_b])
+   print("init weight:{} \nbias:{}".format(rW, rb))
 
-    # train
-    BATCHES = math.ceil(len(real_X) / BATCH_SIZE)
-    for e in range(EPOCHES):
-        for i in range(BATCHES):
-            bX = real_X[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
-            bY = real_Y[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
-            sess.run(train, feed_dict={X: bX, Y: bY})
+   # train
+   BATCHES = math.ceil(len(real_X) / BATCH_SIZE)
+   for e in range(EPOCHES):
+      for i in range(BATCHES):
+         bX = real_X[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
+         bY = real_Y[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
+         sess.run(train, feed_dict={X: bX, Y: bY})
 
-            j = e * BATCHES + i
-            if j % 50 == 0 or (j == EPOCHES * BATCHES - 1 and j % 50 != 0):
-                rW, rb = sess.run([reveal_W, reveal_b])
-                print("I,E,B:{:0>4d},{:0>4d},{:0>4d} weight:{} \nbias:{}".format(
-                    j, e, i, rW, rb))
+         j = e * BATCHES + i
+         if j % 50 == 0 or (j == EPOCHES * BATCHES - 1 and j % 50 != 0):
+            rW, rb = sess.run([reveal_W, reveal_b])
+            print("I,E,B:{:0>4d},{:0>4d},{:0>4d} weight:{} \nbias:{}".format(
+               j, e, i, rW, rb))
 
-    # predict
-    Y_pred = sess.run(reveal_Y, feed_dict={X: real_X, Y: real_Y})
-    print("Y_pred:", Y_pred)
+   # predict
+   Y_pred = sess.run(reveal_Y, feed_dict={X: real_X, Y: real_Y})
+   print("Y_pred:", Y_pred)
 ```
 
 Please refer to [rtt-linear_regression_reveal.py](../example/tutorials/code/rtt-linear_regression_reveal.py) for the complete source code.
@@ -472,7 +472,7 @@ Y_pred: [[5.40625 ]
  [5.828125]
  [5.953125]
  ...
- [5.      ]
+ [5.     ]
  [5.984375]
  [5.984375]]
 ```
@@ -545,33 +545,33 @@ csvprefix = csvprefix + "/tf"
 # #############################################################
 
 with tf.Session() as sess:
-    sess.run(init)
-    xW, xb = sess.run([W, b])
-    print("init weight:{} \nbias:{}".format(xW, xb))
+   sess.run(init)
+   xW, xb = sess.run([W, b])
+   print("init weight:{} \nbias:{}".format(xW, xb))
 
-    # train
-    BATCHES = math.ceil(len(real_X) / BATCH_SIZE)
-    for e in range(EPOCHES):
-        for i in range(BATCHES):
-            bX = real_X[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
-            bY = real_Y[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
-            sess.run(train, feed_dict={X: bX, Y: bY})
+   # train
+   BATCHES = math.ceil(len(real_X) / BATCH_SIZE)
+   for e in range(EPOCHES):
+      for i in range(BATCHES):
+         bX = real_X[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
+         bY = real_Y[(i * BATCH_SIZE): (i + 1) * BATCH_SIZE]
+         sess.run(train, feed_dict={X: bX, Y: bY})
 
-            j = e * BATCHES + i
-            if j % 50 == 0 or (j == EPOCHES * BATCHES - 1 and j % 50 != 0):
-                xW, xb = sess.run([W, b])
-                print("I,E,B:{:0>4d},{:0>4d},{:0>4d} weight:{} \nbias:{}".format(
-                    j, e, i, xW, xb))
-                savecsv("{}-{:0>4d}-{}.csv".format(csvprefix, j, "W"), xW)
-                savecsv("{}-{:0>4d}-{}.csv".format(csvprefix, j, "b"), xb)
+         j = e * BATCHES + i
+         if j % 50 == 0 or (j == EPOCHES * BATCHES - 1 and j % 50 != 0):
+            xW, xb = sess.run([W, b])
+            print("I,E,B:{:0>4d},{:0>4d},{:0>4d} weight:{} \nbias:{}".format(
+               j, e, i, xW, xb))
+            savecsv("{}-{:0>4d}-{}.csv".format(csvprefix, j, "W"), xW)
+            savecsv("{}-{:0>4d}-{}.csv".format(csvprefix, j, "b"), xb)
 
-    # predict
-    Y_pred = sess.run(pred_Y, feed_dict={X: real_X, Y: real_Y})
-    print("Y_pred:", Y_pred)
-    savecsv("{}-pred-{}.csv".format(csvprefix, "Y"), Y_pred)
+   # predict
+   Y_pred = sess.run(pred_Y, feed_dict={X: real_X, Y: real_Y})
+   print("Y_pred:", Y_pred)
+   savecsv("{}-pred-{}.csv".format(csvprefix, "Y"), Y_pred)
 
-    # save real y for evaluation
-    savecsv("{}-real-{}.csv".format(csvprefix, "Y"), real_Y)
+   # save real y for evaluation
+   savecsv("{}-real-{}.csv".format(csvprefix, "Y"), real_Y)
 ```
 
 Please refer to [tf-linear_regression_stat.py](../example/tutorials/code/tf-linear_regression_stat.py) for the complete code.
@@ -656,13 +656,13 @@ os.makedirs("./log/ckpt0", exist_ok=True)
 
 # restore mpc's model and predict
 with tf.Session() as sess:
-    sess.run(init)
-    if os.path.exists("./log/ckpt0/checkpoint"):
-        saver.restore(sess, './log/ckpt0/model')
+   sess.run(init)
+   if os.path.exists("./log/ckpt0/checkpoint"):
+      saver.restore(sess, './log/ckpt0/model')
 
-    # predict
-    Y_pred = sess.run(pred_Y)
-    print("Y_pred:", Y_pred)
+   # predict
+   Y_pred = sess.run(pred_Y)
+   print("Y_pred:", Y_pred)
 ```
 
 For the complete code, please refer to [tf-linear_regression_restore.py](../example/tutorials/code/tf-linear_regression_restore.py).
@@ -693,22 +693,22 @@ Complete source code list reference
 
 TensorFlow version
 
-|                              |                                                                                              |
+|                       |                                                                       |
 | ---------------------------- | -------------------------------------------------------------------------------------------- |
-| Basics                       | [tf-linear_regression.py](../example/tutorials/code/tf-linear_regression.py)                 |
-| Model Training and Saving    | [tf-linear_regression_saver.py](../example/tutorials/code/tf-linear_regression_saver.py)     |
+| Basics                  | [tf-linear_regression.py](../example/tutorials/code/tf-linear_regression.py)             |
+| Model Training and Saving   | [tf-linear_regression_saver.py](../example/tutorials/code/tf-linear_regression_saver.py)    |
 | Model loading and prediction | [tf-linear_regression_restore.py](../example/tutorials/code/tf-linear_regression_restore.py) |
-| Evaluation                   | [tf-linear_regression_stat.py](../example/tutorials/code/tf-linear_regression_stat.py)       |
+| Evaluation               | [tf-linear_regression_stat.py](../example/tutorials/code/tf-linear_regression_stat.py)      |
 
 Rosetta version
 
-|                                       |                                                                                                |
+|                              |                                                                        |
 | ------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| Basics                                | [rtt-linear_regression.py](../example/tutorials/code/rtt-linear_regression.py)                 |
-| Basic (output plain text)             | [rtt-linear_regression_reveal.py](../example/tutorials/code/rtt-linear_regression_reveal.py)   |
-| Model Training and Saving             | [rtt-linear_regression_saver.py](../example/tutorials/code/rtt-linear_regression_saver.py)     |
+| Basics                        | [rtt-linear_regression.py](../example/tutorials/code/rtt-linear_regression.py)             |
+| Basic (output plain text)          | [rtt-linear_regression_reveal.py](../example/tutorials/code/rtt-linear_regression_reveal.py)   |
+| Model Training and Saving          | [rtt-linear_regression_saver.py](../example/tutorials/code/rtt-linear_regression_saver.py)    |
 | Model (Cipher) loading and prediction | [rtt-linear_regression_restore.py](../example/tutorials/code/rtt-linear_regression_restore.py) |
-| Evaluation                            | [rtt-linear_regression_stat.py](../example/tutorials/code/rtt-linear_regression_stat.py)       |
+| Evaluation                     | [rtt-linear_regression_stat.py](../example/tutorials/code/rtt-linear_regression_stat.py)      |
 
 ### Logistic Regression
 
@@ -736,22 +736,22 @@ Complete source code list reference:
 
 TensorFlow version
 
-|                              |                                                                                                  |
+|                       |                                                                          |
 | ---------------------------- | ------------------------------------------------------------------------------------------------ |
-| Basics                       | [tf-logistic_regression.py](../example/tutorials/code/tf-logistic_regression.py)                 |
-| Model Training and Saving    | [tf-logistic_regression_saver.py](../example/tutorials/code/tf-logistic_regression_saver.py)     |
+| Basics                  | [tf-logistic_regression.py](../example/tutorials/code/tf-logistic_regression.py)             |
+| Model Training and Saving   | [tf-logistic_regression_saver.py](../example/tutorials/code/tf-logistic_regression_saver.py)    |
 | Model loading and prediction | [tf-logistic_regression_restore.py](../example/tutorials/code/tf-logistic_regression_restore.py) |
-| Evaluation                   | [tf-logistic_regression_stat.py](../example/tutorials/code/tf-logistic_regression_stat.py)       |
+| Evaluation               | [tf-logistic_regression_stat.py](../example/tutorials/code/tf-logistic_regression_stat.py)      |
 
 Rosetta version
 
-|                                       |                                                                                                    |
+|                              |                                                                           |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Basics                                | [rtt-logistic_regression.py](../example/tutorials/code/rtt-logistic_regression.py)                 |
-| Basic (output plain text)             | [rtt-logistic_regression_reveal.py](../example/tutorials/code/rtt-logistic_regression_reveal.py)   |
-| Model Training and Saving             | [rtt-logistic_regression_saver.py](../example/tutorials/code/rtt-logistic_regression_saver.py)     |
+| Basics                        | [rtt-logistic_regression.py](../example/tutorials/code/rtt-logistic_regression.py)             |
+| Basic (output plain text)          | [rtt-logistic_regression_reveal.py](../example/tutorials/code/rtt-logistic_regression_reveal.py)   |
+| Model Training and Saving          | [rtt-logistic_regression_saver.py](../example/tutorials/code/rtt-logistic_regression_saver.py)    |
 | Model (Cipher) loading and prediction | [rtt-logistic_regression_restore.py](../example/tutorials/code/rtt-logistic_regression_restore.py) |
-| Evaluation                            | [rtt-logistic_regression_stat.py](../example/tutorials/code/rtt-logistic_regression_stat.py)       |
+| Evaluation                     | [rtt-logistic_regression_stat.py](../example/tutorials/code/rtt-logistic_regression_stat.py)      |
 
 Just run these programs in the same as in `Linear Regression`.
 
@@ -812,41 +812,41 @@ For the Rosetta version complete code, please refer to [rtt-ds-lr.py](../example
 Analysis of the code in tf-ds-lr.py and rtt-ds-lr.py reveals two main differences.
 
 1. Create a text line dataset, use TextLineDataset class in TensorFlow and use PrivateTextLineDataset class in Rosetta.
-    The code used in TensorFlow is as following:
+   The code used in TensorFlow is as following:
 
-    ```py
-    dataset_x = tf.data.TextLineDataset(file_x)
-    ...
-    ```
+   ```py
+   dataset_x = tf.data.TextLineDataset(file_x)
+   ...
+   ```
 
-    The code used in Rosetta is as following:
+   The code used in Rosetta is as following:
 
-    ```py
-    dataset_x0 = rtt.PrivateTextLineDataset(
-                    file_x, data_owner=0)  # P0 hold the file data
-    ...
-    ```
+   ```py
+   dataset_x0 = rtt.PrivateTextLineDataset(
+               file_x, data_owner=0)  # P0 hold the file data
+   ...
+   ```
 
 2. Decode functions are implemented differently. TensorFlow version of the decode function split rows to corresponding fields and then converts the fields to floating-point numbers, while the Rosetta version of the decode function also first split rows to corresponding fields and then calls `PrivateInput` function to share the data.
-    The code used in TensorFlow is as following:
+   The code used in TensorFlow is as following:
 
-    ```py
-    # dataset decode
-    def decode_x(line):
-        fields = tf.string_split([line], ',').values
-        fields = tf.string_to_number(fields, tf.float64)
-        return fields
-    ```
+   ```py
+   # dataset decode
+   def decode_x(line):
+      fields = tf.string_split([line], ',').values
+      fields = tf.string_to_number(fields, tf.float64)
+      return fields
+   ```
 
-    The code used in Rosetta is as following:
+   The code used in Rosetta is as following:
 
-    ```py
-    # dataset decode
-    def decode_p0(line):
-        fields = tf.string_split([line], ',').values
-        fields = rtt.PrivateInput(fields, data_owner=0) # P0 hold the file data
-        return fields
-    ```
+   ```py
+   # dataset decode
+   def decode_p0(line):
+      fields = tf.string_split([line], ',').values
+      fields = rtt.PrivateInput(fields, data_owner=0) # P0 hold the file data
+      return fields
+   ```
 
 ## Conclusion
 
@@ -892,16 +892,16 @@ dsets/
 └── P2
 ```
 
-|        |                                                                     |
+|      |                                                    |
 | ------ | ------------------------------------------------------------------- |
-| ALL    | Raw data of the dataset                                             |
-| P*     | Indicates the private data owned by each node                       |
+| ALL   | Raw data of the dataset                                  |
+| P*    | Indicates the private data owned by each node                  |
 | cls*   | Represents a binary classification data set for Logistic Regression |
-| reg*   | Regression data set, used for Linear Regression                     |
-| *train | Represents the data set used for training                           |
-| *test  | Represents the data set used for prediction                         |
-| *x     | Indicates sample                                                    |
-| *y     | Means label                                                         |
+| reg*   | Regression data set, used for Linear Regression                |
+| *train | Represents the data set used for training                     |
+| *test  | Represents the data set used for prediction                   |
+| *x    | Indicates sample                                       |
+| *y    | Means label                                           |
 
 Description:
 
