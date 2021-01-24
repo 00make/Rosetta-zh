@@ -137,7 +137,7 @@ And now, we run this program as follows:
 
 The output will show:
 
-```log
+```sh
 ret: True
 ```
 
@@ -207,7 +207,7 @@ Run this program as follows:
 
 The output is as follows:
 
-```log
+```sh
 ret: 1.0
 ```
 
@@ -335,7 +335,7 @@ And then, we run this program as follows:
 
 The output is as follows:
 
-```log
+```sh
 Y_pred: [[5.409453 ]
  [5.803287 ]
  [5.9634194]
@@ -406,7 +406,7 @@ Just run it as follows:
 
 The output is as follows:
 
-```log
+```sh
 Y_pred: [[1.22580022e+14]
  [1.22481157e+14]
  [1.22514398e+14]
@@ -467,7 +467,7 @@ Then, we run it as follows:
 
 And, the output will be as follows:
 
-```log
+```sh
 Y_pred: [[5.40625 ]
  [5.828125]
  [5.953125]
@@ -675,7 +675,7 @@ And then run it as follows:
 
 The output will be as follows:
 
-```log
+```sh
 Y_pred: [[5.4112522 ]
  [5.80601873]
  [5.96399414]

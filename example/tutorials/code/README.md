@@ -11,11 +11,11 @@ run the following command for checking all the tutorials-examples.
 
 |             |                                                 |
 | ----------- | ----------------------------------------------- |
-| rtt*        | rosetta version                                 |
-| tf*         | tensorflow version                              |
-| linear*     | linear regression                               |
-| logistic*   | logistic regression                             |
-| <no suffix> | basic version                                   |
-| *reveal     | rosetta version with reveal                     |
-| *stat       | statistics                                      |
-| *saver      | rosetta saver.save and tensorflow saver.restore |
+| `rtt*`        | rosetta version                                 |
+| `tf*`         | tensorflow version                              |
+| `linear*`     | linear regression                               |
+| `logistic*`   | logistic regression                             |
+| `<no suffix>` | basic version                                   |
+| `*reveal`     | rosetta version with reveal                     |
+| `*stat`      | statistics                                      |
+| `*saver`      | rosetta saver.save and tensorflow saver.restore |

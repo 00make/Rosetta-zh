@@ -55,22 +55,17 @@ With Rosetta, each of them can run the following script, from which you can see 
 
 ```python
 #!/usr/bin/env python3
-
 # Import rosetta package
 import latticex.rosetta as rtt
 import tensorflow as tf
-
 # You can activate a backend protocol, here we use SecureNN
 rtt.activate("SecureNN")
-
 # Get private data from every party
 matrix_a = tf.Variable(rtt.private_console_input(0, shape=(3, 2)))
 matrix_b = tf.Variable(rtt.private_console_input(1, shape=(2, 1)))
 matrix_c = tf.Variable(rtt.private_console_input(2, shape=(1, 4)))
-
 # Just use the native tf.matmul operation.
 cipher_result = tf.matmul(tf.matmul(matrix_a, matrix_b), matrix_c)
-
 # Start execution
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
