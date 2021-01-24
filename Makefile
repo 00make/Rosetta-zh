@@ -7,7 +7,7 @@ clean:
 	# rm -rf build/chapter* build/_build build/img build/data $(PKG) build/index.rst build/conf.py build/_static/ build/frontpage.html
 	# rm -rf build/examples  build/getting-started.rst
 	# rm -rf build/README_CN.md build/README.md build/doc build/example
-	rm -rf build/
+	rm -rf build/*
 
 # .PHONY：copy
 copy:
