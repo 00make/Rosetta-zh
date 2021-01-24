@@ -145,7 +145,7 @@ html_theme_options = {
     'primary_color': 'red',
     'accent_color': 'blue',
     'header_links': [
-        ('Home', 'index.html', False, 'home'),
+        ('Home', 'index', False, 'home'),
         ('PDF', 'https://github.com/LatticeX-Foundation/Rosetta/blob/master/doc/Rosetta_whitepaper.pdf',
          True, 'fas fa-file-pdf'),
         # ('Jupyter 记事本文件', 'https://github.com/LatticeX-Foundation/Rosetta', True, 'fas fa-download'),
