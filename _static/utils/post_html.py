@@ -19,11 +19,11 @@ lang = soup.find('html')['lang']
 
 # Replace title in index.html
 if lang == 'en':
-    title = 'Dive into Deep Learning: An Interactive Book with Math, Code, and Discussions'
+    title = 'The Rosetta Documentation'
 elif lang == 'zh_CN':
-    title = '《动手学深度学习》：面向中文读者、能运行、可讨论'
+    title = 'Rosetta 技术文档'
 elif lang == 'ko':
-    title = 'Dive into Deep Learning: 수학, 코드, 토론이 곁들여진 참여형 책'
+    title = 'Rosetta 문서'
 soup.find('title').string = title
 
 # Hide unnumbered subsection titles of Chapter 1 in index.html
