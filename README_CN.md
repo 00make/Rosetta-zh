@@ -109,6 +109,7 @@ python rosetta_demo.py --party_id=2
 > [2020-07-29 20:11:06.452] [info] Rosetta: Protocol [SecureNN] backend has been released.
 
 而 P1 方则不会拿到有意义的明文结果:
+
 > plaintext matmul result: [[b'0.000000' b'0.000000' b'0.000000' b'0.000000']
 > [b'0.000000' b'0.000000' b'0.000000' b'0.000000']
 > [b'0.000000' b'0.000000' b'0.000000' b'0.000000']]
@@ -139,7 +140,7 @@ Rosetta 是通过深度扩展、改造 TensorFlow 的前后端各个组件，并
 
 <img src='doc/_static/figs/dynamic_pass.png' width = "800" height = "400" align="middle"/>
 
-**为了帮助大家进一步了解 Rosetta 的整体设计和工程化实践，我们会持续发表一系列的深度技术文章，比如在[InfoQ上的专栏介绍](https://www.infoq.cn/profile/931348F344CDE1/publish/article)，欢迎大家持续关注。**
+**为了帮助大家进一步了解 Rosetta 的整体设计和工程化实践，我们会持续发表一系列的深度技术文章，比如在**[InfoQ上的专栏介绍](https://www.infoq.cn/profile/931348F344CDE1/publish/article)，**欢迎大家持续关注。**
 
 ## 参与Rosetta建设
 

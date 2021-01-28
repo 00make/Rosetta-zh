@@ -113,6 +113,7 @@ At the end, P0 and P2 will get the plaintext output while P1 dose not, just as r
 > [2020-07-29 20:11:06.452] [info] Rosetta: Protocol [SecureNN] backend has been released.
 
 while P1 has:
+
 > plaintext matmul result: [[b'0.000000' b'0.000000' b'0.000000' b'0.000000']
 > [b'0.000000' b'0.000000' b'0.000000' b'0.000000']
 > [b'0.000000' b'0.000000' b'0.000000' b'0.000000']]
