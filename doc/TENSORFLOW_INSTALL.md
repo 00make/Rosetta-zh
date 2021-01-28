@@ -5,8 +5,6 @@
   - [System requirements](#system-requirements)
   - [System software installation](#system-software-installation)
   - [Binary installation](#binary-installation)
-- [Optional, to depress the warning of tensorflow](#optional-to-depress-the-warning-of-tensorflow)
-- [install tensorflow](#install-tensorflow)
   - [Source code installation](#source-code-installation)
   - [Installation verification](#installation-verification)
 
@@ -28,7 +26,7 @@ This document serves as a reference for installing the TensorFlow environment, T
 
 ```bash
 lsb_release -r # e.g. Release: 18.04
-````
+```
 
 > ***If the output release is not 18.04, the corresponding version of the operating system needs to be installed and then perform the subsequent steps.***
 
@@ -37,7 +35,7 @@ lsb_release -r # e.g. Release: 18.04
 ```bash
 python3 --version # e.g. Python 3.6.9
 pip3 --version # e.g. pip 20.0.2
-````
+```
 
 If the system requirements are not met, perform the installation or upgrade.
 
@@ -60,7 +58,7 @@ The TensorFlow binary installation uses the binary `.whl` package that TensorFlo
 pip3 install numpy==1.16.4 --user
 # install tensorflow
 pip3 install tensorflow==1.14.0 --user
-````
+```
 
 > Tensorflow binary installation can refer to [official documentation](https://www.tensorflow.org/install/pip)
 
@@ -70,48 +68,49 @@ pip3 install tensorflow==1.14.0 --user
 
 1. **Installing python dependency packages**
 
-    ```bash
-    pip3 install -U --user pip six wheel setuptools mock 'future>=0.17.1' 'numpy==1.16.4'
-    pip3 install -U --user keras_applications --no-deps
-    pip3 install -U --user keras_preprocessing --no-deps
-    ````
+```bash
+pip3 install -U --user pip six wheel setuptools mock 'future>=0.17.1' 'numpy==1.16.4'
+pip3 install -U --user keras_applications --no-deps
+pip3 install -U --user keras_preprocessing --no-deps
+```
 
 2. **Installation of bazel (v0.25.0)**
 
-    ```bash
-    # download bazel binary installer
-    wget https://github.com/bazelbuild/bazel/releases/download/0.25.0/bazel-0.25.0-installer-linux-x86_64.sh
-    # set to executable
-    chmod +x bazel-0.25.0-installer-linux-x86_64.sh
-    # install required tool unzip
-    sudo apt install unzip
-    # install bazel
-    ./bazel-0.25.0-installer-linux-x86_64.sh --user
-    # update the PATH environment variable
-    export PATH="$PATH:$HOME/bin"
-    ````
+```bash
+# download bazel binary installer
+wget https://github.com/bazelbuild/bazel/releases/download/0.25.0/bazel-0.25.0-installer-linux-x86_64.sh
+# set to executable
+chmod +x bazel-0.25.0-installer-linux-x86_64.sh
+# install required tool unzip
+sudo apt install unzip
+# install bazel
+./bazel-0.25.0-installer-linux-x86_64.sh --user
+# update the PATH environment variable
+export PATH="$PATH:$HOME/bin"
+```
 
-    > bazel installation reference [official documentation](https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu)
+> bazel installation reference [official documentation](https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu)
 
 3. **TensorFlow source code compilation**
-    > Installation time will be long (about 6 hours), it is recommended to configure 8G+ memory
 
-    ```bash
-    # clone TensorFlow github repository
-    git clone https://github.com/tensorflow/tensorflow.git
-    # checkout v1.14.0 tag
-    cd tensorflow
-    git checkout v1.14.0
-    # configure and then bazel compile...
-    ./configure
-    bazel build --config=opt -j 4 //tensorflow/tools/pip_package:build_pip_package
-    # build .whl installer
-    ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-    # install tensorflow
-    pip3 install /tmp/tensorflow_pkg/*.whl --user
-    ````
+> Installation time will be long (about 6 hours), it is recommended to configure 8G+ memory
 
-    > TensorFlow source code installation can be referenced to [official documentation][tensorflow-source-install]
+```bash
+# clone TensorFlow github repository
+git clone https://github.com/tensorflow/tensorflow.git
+# checkout v1.14.0 tag
+cd tensorflow
+git checkout v1.14.0
+# configure and then bazel compile...
+./configure
+bazel build --config=opt -j 4 //tensorflow/tools/pip_package:build_pip_package
+# build .whl installer
+./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+# install tensorflow
+pip3 install /tmp/tensorflow_pkg/*.whl --user
+```
+
+> TensorFlow source code installation can be referenced to [official documentation][tensorflow-source-install]
 
 ## Installation verification
 
@@ -121,7 +120,7 @@ After installation, check TensorFlow availability.
 
 ```bash
 python3 -c 'import tensorflow as tf;print(tf.__version__)'
-````
+```
 
 Output: `v1.14.0` indicates successful installation.
 

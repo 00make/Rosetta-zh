@@ -1,59 +1,5 @@
 # Rosetta User API
 
-- [Rosetta User API](#rosetta-user-api)
-  - [Overview](#overview)
-  - [Control API](#control-api)
-    - [Protocol Management](#protocol-management)
-      - [`get_supported_protocols()`](#get_supported_protocols)
-      - [`get_default_protocol_name()`](#get_default_protocol_name)
-      - [`activate(protocol_name=None, protocol_config_str=None)`](#activateprotocol_namenone-protocol_config_strnone)
-      - [`get_protocol_name()`](#get_protocol_name)
-      - [`deactivate()`](#deactivate)
-      - [`get_protocol_config()`](#get_protocol_config)
-      - [`get_party_id()`](#get_party_id)
-    - [Input and Dataset Utils](#input-and-dataset-utils)
-      - [`private_input(party_id: int, input_val)`](#private_inputparty_id-int-input_val)
-      - [`private_console_input(party_id: int)`](#private_console_inputparty_id-int)
-      - [`class PrivateDataSet`](#class-privatedataset)
-      - [`class PrivateTextLineDataset`](#class-privatetextlinedataset)
-  - [Operation API](#operation-api)
-    - [Terms and definition](#terms-and-definition)
-    - [Common notes](#common-notes)
-    - [Computational SecureOps](#computational-secureops)
-      - [`SecureAdd(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#secureaddx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureSub(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securesubx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureMul(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securemulx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureFloorDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securefloordivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securedivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureDivide(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securedividex-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureTruediv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securetruedivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureRealDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securerealdivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#secureequalx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureGreater(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securegreaterx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureGreaterEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securegreaterequalx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLess(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelessx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLessEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelessequalx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalAnd(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelogicalandx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalOr(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelogicalorx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalXor(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelogicalxorx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalNot(x, name=None)`](#securelogicalnotx-namenone)
-      - [`SecureMatMul(a, b, transpose_a=False, transpose_b=False, name=None)`](#securematmula-b-transpose_afalse-transpose_bfalse-namenone)
-      - [`SecurePow(x, y, name=None, lh_is_const=False, rh_is_const=True)`](#securepowx-y-namenone-lh_is_constfalse-rh_is_consttrue)
-      - [`SecureLog(x, name=None)`](#securelogx-namenone)
-      - [`SecureLog1p(x, name=None)`](#securelog1px-namenone)
-      - [`SecureHLog(x, name=None)`](#securehlogx-namenone)
-      - [`SecureSigmoid(x, name=None)`](#securesigmoidx-namenone)
-      - [`SecureRelu(x, name=None)`](#securerelux-namenone)
-      - [`SecureReluPrime(x, name=None)`](#securereluprimex-namenone)
-      - [`SecureAbs(x, name=None)`](#secureabsx-namenone)
-      - [`SecureAbsPrime(x, name=None)`](#secureabsprimex-namenone)
-      - [`SecureMax(input_tensor, axis=None, name=None)`](#securemaxinput_tensor-axisnone-namenone)
-      - [`SecureMean(input_tensor, axis=None, name=None)`](#securemeaninput_tensor-axisnone-namenone)
-      - [`SecureReveal(a, reveal_party=7)`](#securereveala-reveal_party7)
-    - [I/O SecureOps](#io-secureops)
-      - [`SecureSaveV2(prefix, tensor_names, shape_and_slices, tensors, name=None)`](#securesavev2prefix-tensor_names-shape_and_slices-tensors-namenone)
-      - [`PrivateInput(x, data_owner, name=None)`](#privateinputx-data_owner-namenone)
-
 ## Overview
 
 By using Rosetta framework, users can directly perform training or inference task on all of their respective dataset without leaking any privacy to others just after adding a single code `import latticex.rosetta` at the header of your existing TensorFlow programs (see our [tutorial documentation](TUTORIALS.md) for more details) in the simplest case. Besides, we also provide some easy-to-use APIs, which we will describe in the following context, to enable more flexibility.
@@ -85,7 +31,7 @@ The APIs can mainly be classified into two types: 'Control API', which should be
  Activate the specific protocol to carry out your subsequent Tensorflow Operations.
 
  It is highly recommended that you use this interface explicitly to choose your backend protocol before calling `run` in the Tensorflow session.
- 
+
  Besides, do NOT call this while the graph is running.
 
  **Args:**
@@ -138,7 +84,7 @@ The APIs can mainly be classified into two types: 'Control API', which should be
 #### `class PrivateDataSet`
 
  A wrapper class for multiparty to align and 'encrypt' ('share') its private dataset from a local CSV file or `ndarray` target of numpy.
- 
+
  Every party's dataset should be either sample-aligned or feature-aligned already.
 
  When instantiation, for example, if dataset_type == DatasetType.SampleAligned (default dataset_type is SampleAligned),
@@ -222,7 +168,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 2. On data type (`dtype`) of `SecureOps` input and output `tensor`, **Rosetta's Python frontend will uniformly convert them as `tf.string' in the current version.**
 
 3. For binary operators such as `SecureAdd`, the current `Rosetta v0.2.0` does not support the `Tensor` with dimension more than 2, while for unary operators such as `SecureRelu`, their tensor shape is not restricted.
- 
+
 ### Computational SecureOps
 
 #### `SecureAdd(x, y, name=None, lh_is_const=False, rh_is_const=False)`
@@ -242,7 +188,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
  ​ A `Tensor`. Has the same type as `x`.
 
  *NOTE:* broadcasting is supported for this SecureOp.
- 
+
 #### `SecureSub(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
  Returns `x - y` element-wise.
@@ -260,7 +206,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
  ​ A `Tensor`. Has the same type as `x`.
 
  *NOTE:* broadcasting is supported for this SecureOp.
- 
+
 #### `SecureMul(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
  Returns `x * y` element-wise.
@@ -279,7 +225,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:* broadcasting is supported for this SecureOp.
 
-#### `SecureFloorDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)` 
+#### `SecureFloorDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
  Integral floor division of `x` by `y` in shared status element-wise, rounding toward the most negative integer. For example,$6 / 4 = 1$ and $(-6) / 4 = -2$.
 
@@ -296,7 +242,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
  ​ A `Tensor`. Has the same type as `x`.
 
  *NOTE:* broadcasting is supported for this SecureOp.
- 
+
 #### `SecureDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
  Alias for `SecureFloorDiv`. Please refer to `SecureFloorDiv`. we recommend you to use `SecureFloorDiv` as you can.
@@ -316,15 +262,15 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
  **Returns:**
 
  ​ A `Tensor`. Has the same type as `x`.
- 
+
  *NOTE:*
 
 - broadcasting is supported for this SecureOp.
 - due to its intrinsic algorithm complexity in MPC style to meet the security guarantee, **this SecureOp is comparatively much more time-consuming. So you may aviod to use this SecureOp as possible as you can.**
 - this SecureOp is just the same as `SecureRealDiv` and `SecureTrueDiv`.
- 
+
 #### `SecureTruediv(x, y, name=None, lh_is_const=False, rh_is_const=False)`
- 
+
  Alias for `SecureDivide`. Please refer to `SecureDivide`.
 
 #### `SecureRealDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`
@@ -348,11 +294,11 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
  ​ A `Tensor`. Has the same type as `x`.
 
  *NOTE:*
- 
-* broadcasting is supported for this SecureOp.
- 
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
- 
+
+\- broadcasting is supported for this SecureOp.
+
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+
 #### `SecureGreater(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
  Returns the truth value of `(x > y)` element-wise, as $0.0$ for false and $1.0$ for true.
@@ -371,8 +317,8 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* broadcasting is supported for this SecureOp.
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+\- broadcasting is supported for this SecureOp.
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
 
 #### `SecureGreaterEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -392,8 +338,8 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* broadcasting is supported for this SecureOp.
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause of your source code directly.**
+\- broadcasting is supported for this SecureOp.
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause of your source code directly.**
 
 #### `SecureLess(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -413,8 +359,8 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* Broadcasting is supported for this SecureOp.
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+\- Broadcasting is supported for this SecureOp.
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
 
 #### `SecureLessEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -434,11 +380,11 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* Broadcasting is supported for this SecureOp.
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+\- Broadcasting is supported for this SecureOp.
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
 
 #### `SecureLogicalAnd(x, y, name=None, lh_is_const=False, rh_is_const=False)`
- 
+
  Returns the truth value of `(x & y)` element-wise, as 0 for false and 1 for true.
 
  **Args:**
@@ -455,8 +401,8 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* Broadcasting is supported for this SecureOp.
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+\- Broadcasting is supported for this SecureOp.
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
 
 #### `SecureLogicalOr(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -476,8 +422,8 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* Broadcasting is supported for this SecureOp.
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+\- Broadcasting is supported for this SecureOp.
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
 
 #### `SecureLogicalXor(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -497,8 +443,8 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* Broadcasting is supported for this SecureOp.
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+\- Broadcasting is supported for this SecureOp.
+\- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
 
 #### `SecureLogicalNot(x, name=None)`
 
@@ -515,7 +461,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
  *NOTE:*
 
-* The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
+- The output values are still in the shared status, just like other `SecureOps`. So in the current version, **you should not use the local output `Tensor` in any following predicate clause directly.**
 
 #### `SecureMatMul(a, b, transpose_a=False, transpose_b=False, name=None)`
 
@@ -554,7 +500,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
  **Returns:**
 
  ​ A `Tensor`. Has the same type as `x`.
- 
+
 #### `SecureLog(x, name=None)`
 
  Computes natural logarithm of `x` element-wise. Any dimension of `x` is supported. This is optimized version for $x \in [0.0001, 10]$, so **DO NOT** use it for other $x$.
@@ -715,7 +661,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 
 #### `SecureReveal(a, reveal_party=7)`
 
- This auxiliary `SecureOp` can reveal the plaintext value of the `Tensor` `a`. **Since the output of this interface can be plaintext, be cautious and reach a consensus among all the parties when using this in production environment.** 
+ This auxiliary `SecureOp` can reveal the plaintext value of the `Tensor` `a`. **Since the output of this interface can be plaintext, be cautious and reach a consensus among all the parties when using this in production environment.**
 
  **Args:**
 
@@ -723,7 +669,7 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 - **`reveal_party(optional)`**: Configure which party can get the plaintext output, and this value should be 0~7, which is interpreted as 3-bit bitmap flags $[P2\ P1 \ P0]$, for example, `3` means only the return of party `P0` and`P1` will be plaintext. **By default, it is set to `7`, meaning that all `P0`, `P1` and `P2` can get the plaintext output values.**
 
  **Returns:**
- 
+
  A `tensor`, of which values can be in plaintext as configured.
 
 ### I/O SecureOps
@@ -744,17 +690,17 @@ We will try to represent each `SecureOp` interface in an clear and easy-to-under
 - $7$: the saved plaintext file will be stored in all parties, i.e `P0`, `P1` and `P2`.
 
  **Args:**
- 
+
 - **`prefix`**: A `Tensor` of type `string`. Must have a single element. The prefix of the V2 checkpoint to which we write the tensors.
 - **`tensor_name`**: A `Tensor` of type `string`. shape ${N}$. The names of the tensors to be saved.
 - **`shape_and_slices`**: A `Tensor` of type `string`. shape ${N}$. The slice specs of the tensors to be saved. Empty strings indicate that they are non-partitioned tensors.
 - **`tensors`**:A list of `Tensor` objects, which are in shared status. $N$ tensors to save.
 - **`name`**: A name for the operation (optional).
- 
+
  **Returns:**
- 
+
  The created Operation.
- 
+
  *NOTE*: Every party must have the same configured value so that the system call perform the correct actions. **This Configuration is important due to its output values, which may be sensitive, are in plaintext . So be cautious and reach a consensus among all the parties.**
 
 #### `PrivateInput(x, data_owner, name=None)`

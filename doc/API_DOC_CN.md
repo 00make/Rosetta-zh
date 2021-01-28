@@ -1,45 +1,5 @@
 # Rosetta 算子API文档
 
-- [Rosetta 算子API文档](#rosetta-算子api文档)
-  - [概述](#概述)
-    - [术语和定义](#术语和定义)
-    - [通用的说明](#通用的说明)
-  - [SecureOps API](#secureops-api)
-    - [计算类SecureOps](#计算类secureops)
-      - [`SecureAdd(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#secureaddx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureSub(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securesubx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureMul(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securemulx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureFloorDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securefloordivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securedivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureDivide(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securedividex-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureTruediv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securetruedivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureRealDiv(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securerealdivx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#secureequalx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureGreater(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securegreaterx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureGreaterEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securegreaterequalx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLess(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelessx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLessEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelessequalx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalAnd(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelogicalandx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalOr(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelogicalorx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalXor(x, y, name=None, lh_is_const=False, rh_is_const=False)`](#securelogicalxorx-y-namenone-lh_is_constfalse-rh_is_constfalse)
-      - [`SecureLogicalNot(x, name=None)`](#securelogicalnotx-namenone)
-      - [`SecureMatMul(a, b, transpose_a=False, transpose_b=False, name=None)`](#securematmula-b-transpose_afalse-transpose_bfalse-namenone)
-      - [`SecurePow(x, y, name=None, lh_is_const=False, rh_is_const=True)`](#securepowx-y-namenone-lh_is_constfalse-rh_is_consttrue)
-      - [`SecureLog(x, name=None)`](#securelogx-namenone)
-      - [`SecureLog1p(x, name=None)`](#securelog1px-namenone)
-      - [`SecureHLog(x, name=None)`](#securehlogx-namenone)
-      - [`SecureSigmoid(x, name=None)`](#securesigmoidx-namenone)
-      - [`SecureRelu(x, name=None)`](#securerelux-namenone)
-      - [`SecureReluPrime(x, name=None)`](#securereluprimex-namenone)
-      - [`SecureAbs(x, name=None)`](#secureabsx-namenone)
-      - [`SecureAbsPrime(x, name=None)`](#secureabsprimex-namenone)
-      - [`SecureMax(input_tensor, axis=None, name=None)`](#securemaxinput_tensor-axisnone-namenone)
-      - [`SecureMean(input_tensor, axis=None, name=None)`](#securemeaninput_tensor-axisnone-namenone)
-      - [`SecureReveal(a, reveal_party=-1)`](#securereveala-reveal_party-1)
-    - [I/O SecureOps](#io-secureops)
-      - [`SecureSaveV2(prefix, tensor_names, shape_and_slices, tensors, name=None)`](#securesavev2prefix-tensor_names-shape_and_slices-tensors-namenone)
-      - [`PrivateInput(x, data_owner, name=None)`](#privateinputx-data_owner-namenone)
-
 ## 概述
 
 > 注意，此文档内容可能会有所滞后，最新的接口文档请参考[用户接口文档](API_DOC.md)。
@@ -211,9 +171,9 @@
 
   *注意:*
 
-* 这个SecureOp支持Tensorflow中的广播机制。
+- 这个SecureOp支持Tensorflow中的广播机制。
 
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
 
 #### `SecureGreaterEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -233,9 +193,9 @@
 
   *注意:*
 
-* 这个SecureOp支持Tensorflow中的广播机制。
+\- 这个SecureOp支持Tensorflow中的广播机制。
 
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+\- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
 
 #### `SecureLess(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -255,8 +215,8 @@
 
   *注意:*
 
-* 这个SecureOp支持Tensorflow中的广播机制。
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+\- 这个SecureOp支持Tensorflow中的广播机制。
+\- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
 
 #### `SecureLessEqual(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -276,8 +236,8 @@
 
   *注意:*
 
-* 这个SecureOp支持Tensorflow中的广播机制。
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+\- 这个SecureOp支持Tensorflow中的广播机制。
+\- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
 
 #### `SecureLogicalAnd(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -297,8 +257,8 @@
 
   *注意:*
 
-* 这个SecureOp支持Tensorflow中的广播机制。
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+\- 这个SecureOp支持Tensorflow中的广播机制。
+\- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
 
 #### `SecureLogicalOr(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -318,8 +278,8 @@
 
   *注意:*
 
-* 这个SecureOp支持Tensorflow中的广播机制。
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+\- 这个SecureOp支持Tensorflow中的广播机制。
+\- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
 
 #### `SecureLogicalXor(x, y, name=None, lh_is_const=False, rh_is_const=False)`
 
@@ -339,8 +299,8 @@
 
   *注意:*
 
-* 这个SecureOp支持Tensorflow中的广播机制。
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+\- 这个SecureOp支持Tensorflow中的广播机制。
+\- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
 
 #### `SecureLogicalNot(x, name=None)`
 
@@ -357,7 +317,7 @@
 
   *注意:*
 
-* 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
+\- 由于和其他计算类算子一样，结果是密文共享状态的值，**所以不可以直接的在后续程序中直接的对此算子的结果进行判断类型语句的处理！**
   
 #### `SecureMatMul(a, b, transpose_a=False, transpose_b=False, name=None)`
 

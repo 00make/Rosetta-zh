@@ -139,11 +139,11 @@ Rosetta 是通过深度扩展、改造 TensorFlow 的前后端各个组件，并
 
 <img src='doc/_static/figs/dynamic_pass.png' width = "800" height = "400" align="middle"/>
 
-> **为了帮助大家进一步了解 Rosetta 的整体设计和工程化实践，我们会持续发表一系列的深度技术文章，比如在[InfoQ上的专栏介绍](https://www.infoq.cn/profile/931348F344CDE1/publish/article)，欢迎大家持续关注。**
+**为了帮助大家进一步了解 Rosetta 的整体设计和工程化实践，我们会持续发表一系列的深度技术文章，比如在[InfoQ上的专栏介绍](https://www.infoq.cn/profile/931348F344CDE1/publish/article)，欢迎大家持续关注。**
 
 ## 参与Rosetta建设
 
-Rosetta 是一个由[Lattice基金会]((https://latticex.foundation/))维护的、基于 LPGLv3 许可证的开源项目。
+Rosetta 是一个由[Lattice基金会](https://latticex.foundation/)维护的、基于 LPGLv3 许可证的开源项目。
 
 **我们欢迎来自个人和组织的各种贡献，包括代码开发、文档撰写、合作交流等各个方面，也欢迎 star、推广我们的 Github 项目**。具体内容请参考社区参与指南、社区行为规范。如果在使用或开发中有任何的问题，你也可以直接的在 [这里](https://github.com/LatticeX-Foundation/Rosetta/issues/new)给我们提 issues。
 
