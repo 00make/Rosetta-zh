@@ -28,7 +28,7 @@
 lsb_release -r     # e.g. Release: 18.04
 ```
 
-***如果输出发布版本非`18.04`，则需要安装对应版本操作系统，然后执行后续步骤。***
+**如果输出发布版本非`18.04`，则需要安装对应版本操作系统，然后执行后续步骤。**
 
 - **检查python3、pip3**
 
@@ -89,9 +89,10 @@ pip3 install tensorflow==1.14.0 --user
    export PATH="$PATH:$HOME/bin"
    ```
 
-   > bazel安装参考[官方文档][bazel-install]
+   > bazel安装参考[官方文档](https://docs.bazel.build/versions/master/install-ubuntu.html#install-with-installer-ubuntu)
 
 3. **TensorFlow源码编译**
+
    > 安装时间将很长（约6小时），建议配置8G以上的内存
 
    ```bash
@@ -109,7 +110,7 @@ pip3 install tensorflow==1.14.0 --user
    pip3 install /tmp/tensorflow_pkg/*.whl --user
    ```
 
-   > TensorFlow源码安装可以参考[官方文档][tensorflow-source-install]
+   > TensorFlow源码安装可以参考[官方文档](https://www.tensorflow.org/install/source)
 
 ## 安装检验
 

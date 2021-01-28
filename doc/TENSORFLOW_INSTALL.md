@@ -110,7 +110,7 @@ bazel build --config=opt -j 4 //tensorflow/tools/pip_package:build_pip_package
 pip3 install /tmp/tensorflow_pkg/*.whl --user
 ```
 
-> TensorFlow source code installation can be referenced to [official documentation][tensorflow-source-install]
+> TensorFlow source code installation can be referenced to [official documentation](https://www.tensorflow.org/install/source)
 
 ## Installation verification
 

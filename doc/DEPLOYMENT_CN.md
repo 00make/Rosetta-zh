@@ -71,7 +71,7 @@
 
 ### TensorFlow
 
-TensorFlow安装参考: [TensorFlow安装][tensorFlow-install]。
+TensorFlow安装参考: [TensorFlow安装](./TENSORFLOW_INSTALL_CN.md)。
 
 ### Rosetta
 
@@ -90,15 +90,15 @@ cd Rosetta && bash compile_and_test_all.sh
 
 ## 部署测试
 
-安装好`Rosetta`开发环境，接下对[百万富翁问题][millionaire-problem]构建范例测试`Rosetta`可用性。`Rosetta`使用的是三方`MPC`模型，需要部署三个计算节点，可以单机器或多机器部署。
+安装好`Rosetta`开发环境，接下对[百万富翁问题](../example/millionaire/README.md)构建范例测试`Rosetta`可用性。`Rosetta`使用的是三方`MPC`模型，需要部署三个计算节点，可以单机器或多机器部署。
 
 > Rosetta基于TensorFlow实现，当前只支持TensorFlow的本地部署。
 
 ### 范例
 
-直接使用`Rosetta`源码仓库的[百万富翁问题范例][millionaire-example]。
+直接使用`Rosetta`源码仓库的[百万富翁问题范例](../example/millionaire/README.md)。
 
-> 注意: [Rosetta开发教程][tutorials]有多个隐私机器学习开发实例可以参考，详情参考[Tutorials](./TUTORIALS.md)。
+> 注意: [Rosetta开发教程](./TUTORIALS.md)有多个隐私机器学习开发实例可以参考，详情参考[Tutorials](./TUTORIALS.md)。
 
 > 注意: 单机部署可以直接在Rosetta仓库`example/millionaire`目录下，直接运行`run.sh`进行验证。
 
@@ -179,7 +179,7 @@ openssl x509 -req -days 365 -in certs/cert.req -signkey certs/server-prikey -out
 - `SERVER_CERT`: 服务端签名证书
 - `SERVER_PRIKEY`: 服务端私钥
 - `SERVER_PRIKEY_PASSWORD`: 服务端私钥密码口令（没有设置则为空字符串）
-- `SAVER_MODE`: 模型保存配置值，可以通过此值的配置设定保存的模型中的参数值是否为明文值，或者在具体哪一参与方中保存为明文，具体请参考[算子API文档](API_DOC_CN.md)。
+- `SAVER_MODE`: 模型保存配置值，可以通过此值的配置设定保存的模型中的参数值是否为明文值，或者在具体哪一参与方中保存为明文，具体请参考[算子API文档](./API_DOC_CN.md)。
 
 ### 运行测试
 
@@ -229,9 +229,9 @@ python3 millionaire.py --party_id=0
 
 多机测试类似于单机测试，不同点在于配置文件需要设置不同的`HOST`字段为对应IP地址。
 
--------
+----
 
-[tensorFlow-install]:TENSORFLOW_INSTALL_CN.md
+[tensorFlow-install]:./TENSORFLOW_INSTALL_CN.md
 [millionaire-problem]:https://en.wikipedia.org/wiki/Yao%27s_Millionaires%27_Problem
 [millionaire-example]:../example/millionaire/millionaire.py
-[tutorials]:TUTORIALS.md
+[tutorials]:./TUTORIALS_CN.md
